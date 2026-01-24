@@ -122,3 +122,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+// shop.js
+
+// Select category buttons and product cards
+const categoryButtons = document.querySelectorAll('.category-filters .baby-btn');
+const products = document.querySelectorAll('.product-card');
+
+// Add category attribute to each product
+products[0].dataset.category = 'newborn';
+products[1].dataset.category = 'active';
+products[2].dataset.category = 'night';
+products[3].dataset.category = 'newborn';
+products[4].dataset.category = 'active';
+products[5].dataset.category = 'night';
+
+// Filter function
+categoryButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active class from all buttons
+    categoryButtons.forEach(b => b.classList.remove('active'));
+    // Add active to clicked button
+    btn.classList.add('active');
+
+    const category = btn.textContent.toLowerCase().replace(/\s/g, ''); // e.g., "Night Protection" -> "nightprotection"
+
+    products.forEach(product => {
+      // Show all products if "all" is clicked
+      if (btn.textContent.toLowerCase() === 'all') {
+        product.style.display = 'block';
+      } else if (product.dataset.category === category || category.startsWith(product.dataset.category)) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
+});
