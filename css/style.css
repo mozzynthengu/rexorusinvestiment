@@ -117,29 +117,24 @@ img {
   opacity: 0.8;
 }
 /* LOGO ALIGNMENT FIX */
-/* -- Logo -- */
-header .logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
+.logo {
+  display: flex;
+  align-items: center;   /* vertical alignment */
+  gap: 12px;             /* space between image and text */
 }
 
-header .logo img {
-    width: 70px;
-    height: auto;
-    border-radius: 5px;
-    object-fit: contain;
+/* Logo image */
+.logo img {
+  max-height: 85px;
+  width: auto;
+  object-fit: contain;
 }
 
-header .logo-text h1 {
-    font-size: 1.3rem;
-    margin: 0;
-    color: red;
-}
-
-header .logo-text span {
-    font-size: 1rem;
-    color: #ff9a00;
+/* Text container */
+.logo-text {
+  display: flex;
+  flex-direction: column; /* stack text lines */
+  justify-content: center;
 }
 
 /* Main brand text */
