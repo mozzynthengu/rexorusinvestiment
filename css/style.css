@@ -79,20 +79,83 @@ img {
   justify-content: space-between;
   align-items: center;
 }
-
+<!--_==============logo--===========--->
+/* ================= LOGO FIX ================= */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.6rem;
+  gap: 10px;              /* proper spacing */
   font-weight: 700;
   color: var(--primary);
 }
 
+/* Logo image */
 .logo img {
-  max-height: 60px;
-  transition: 0.3s ease;
+  max-height: 55px;       /* perfect navbar size */
+  width: auto;
+  object-fit: contain;
+  transition: max-height 0.3s ease;
 }
+
+/* On scroll – subtle shrink */
+.navbar.scrolled .logo img {
+  max-height: 45px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+}
+
+.brand-tagline {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+/* LOGO ALIGNMENT FIX */
+/* -- Logo -- */
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+header .logo img {
+    width: 70px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+header .logo-text h1 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: red;
+}
+
+header .logo-text span {
+    font-size: 1rem;
+    color: #ff9a00;
+}
+
+/* Main brand text */
+.brand-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+/* Small tagline */
+.brand-tagline {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
 
 .navbar.scrolled .logo img {
   max-height: 45px;
