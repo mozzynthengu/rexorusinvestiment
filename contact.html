@@ -17,21 +17,20 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
+  
 </head>
 <body>
 
 <!-- ================= NAVBAR ================= -->
 <header class="navbar" role="banner">
   <div class="container nav-flex">
-  
- <div class="logo">
-            <img src="images/logo18.png" alt="Afribicon Technology Logo" width="80">
-            <div class="logo-text">
-                <h1>REXORUS</h1>
-                <span>INVESTIMENT</span>
-            </div>
-        </div>
-
+    <div class="logo">
+      <img src="images/logo18.png" alt="Afribicon Technology Logo" width="80">
+      <div class="logo-text">
+          <h1>REXORUS</h1>
+          <span>INVESTMENT</span>
+      </div>
+    </div>
 
     <!-- Hamburger -->
     <button class="nav-toggle" aria-label="Toggle navigation">
@@ -46,40 +45,48 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
+
 <!-- ================= HERO BANNER ================= -->
-<section class="hero-banner" style="background-image:url('images/contact-hero.jpg');">
+<section class="hero-banner" style="background-image:url('images/hero-3.jpg');">
   <div class="hero-overlay container">
     <div>
       <h1>Get in Touch</h1>
       <p>We’re here to help! Reach out for questions, feedback, or support regarding our baby care products.</p>
+      <a href="#contact-form" class="baby-btn">Send a Message</a>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT INFO ================= -->
-<section class="contact-info">
+<!-- ================= BUY OPTIONS ================= -->
+<section class="buy-options">
   <div class="container">
-    <h2 class="section-title">Contact Information</h2>
+    <h2 class="section-title">CONTACT US NOW
     <div class="feature-flex">
+      <div class="feature-card">
+        <i class="fas fa-phone fa-2x"></i>
+        <h4>Call Us</h4>
+        <p><a href="tel:+27612645044">+27 612 645 044</a></p>
+      </div>
+      <div class="feature-card">
+        <i class="fab fa-whatsapp fa-2x"></i>
+        <h4>WhatsApp</h4>
+        <p><a href="https://wa.me/27612645044" target="_blank" rel="noopener">Send a Message</a></p>
+      </div>
       <div class="feature-card">
         <i class="fas fa-envelope fa-2x"></i>
         <h4>Email</h4>
-        <p><a href="mailto:support@babychoice.co.za">sagesdesigns4@gmail.com</a></p>
+        <p><a href="mailto:sagesdesigns4@gmail.com">Send an Email</a></p>
       </div>
       <div class="feature-card">
-        <i class="fas fa-phone fa-2x"></i>
-        <h4>Phone</h4>
-        <p><a href="tel:+27101234567">+27 612645044</a></p>
-      </div>
-      <div class="feature-card">
-        <i class="fas fa-map-marker-alt fa-2x"></i>
-        <h4>Address</h4>
-        <p>856 ARCADIA ST, PRETORIA-0083, SOUTH AFRICA</p>
+        <i class="fas fa-file-alt fa-2x"></i>
+        <h4>Google Form</h4>
+        <p><a href="https://forms.gle/YOURFORMID" target="_blank" rel="noopener">Fill the Form</a></p>
       </div>
     </div>
   </div>
@@ -89,7 +96,7 @@
 <section class="contact-form-section">
   <div class="container">
     <h2 class="section-title">Send Us a Message</h2>
-    <form action="#" method="POST" class="contact-form">
+    <form action="#" method="POST" class="contact-form" id="contact-form">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -107,11 +114,13 @@
         <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
       </div>
       <button type="submit" class="baby-btn">Send Message</button>
+      <p id="form-message" style="display:none;color:green;margin-top:10px;"></p>
     </form>
   </div>
 </section>
 
-<!-- ================= MAP (Optional) ================= -->
+
+<!-- ================= MAP ================= -->
 <section class="contact-map">
   <div class="container">
     <h2 class="section-title">Our Location</h2>
@@ -129,12 +138,11 @@
     <div class="container cta-content">
       <h2>Shop Our Baby Care Products</h2>
       <p>Explore gentle and trusted baby products today.</p>
-      <a href="/shop.html" class="baby-btn">Shop Now</a>
+      <a href="shop.html" class="baby-btn" target="_blank">Shop Now</a>
     </div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="container footer-grid">
@@ -166,8 +174,8 @@
 
     <div class="footer-contact">
       <h4>Contact Us</h4>
-      <p>Email: <a href="mailto:support@babychoice.co.za">sagesdesigns4@gmai.com</a></p>
-      <p>Phone: <a href="tel:+27 612645044">+27 612645044</a></p>
+      <p>Email: <a href="mailto:sagesdesigns4@gmail.com">sagesdesigns4@gmail.com</a></p>
+      <p>Phone: <a href="tel:+27612645044">+27 612 645 044</a></p>
 
       <h4 class="follow-title">Follow Us</h4>
       <div class="footer-social">
@@ -184,6 +192,23 @@
   </div>
 </footer>
 
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/27612645044" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 <script src="js/script.js"></script>
+<script>
+  // Simple form confirmation
+  const form = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    formMessage.style.display = 'block';
+    formMessage.textContent = 'Thank you! Your message has been sent.';
+    form.reset();
+  });
+</script>
 </body>
 </html>
