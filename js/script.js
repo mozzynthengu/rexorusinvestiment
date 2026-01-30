@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startAutoSlide();
     };
 
-    // Event listeners
+    // Navigation buttons
     next.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
     prev.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
 
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSlider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
     heroSlider.addEventListener('touchmove', e => endX = e.touches[0].clientX);
     heroSlider.addEventListener('touchend', () => {
-      if (startX - endX > 50) nextSlide(); // swipe left
-      if (endX - startX > 50) prevSlide(); // swipe right
+      if (startX - endX > 50) nextSlide();   // swipe left
+      if (endX - startX > 50) prevSlide();   // swipe right
       resetAutoSlide();
     });
 
@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.querySelector('.nav-menu');
 
   if (navToggle && navMenu) {
-
     const toggleMenu = () => {
       navMenu.classList.toggle('nav-menu-active');
       navToggle.classList.toggle('open');
@@ -90,21 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', !expanded);
     };
 
-    navToggle.addEventListener('click', (e) => {
+    navToggle.addEventListener('click', e => {
       e.stopPropagation();
       toggleMenu();
     });
 
-    // Close menu if click happens outside
-    document.addEventListener('click', (e) => {
+    // Close menu if click outside
+    document.addEventListener('click', e => {
       if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('nav-menu-active')) {
         toggleMenu();
       }
     });
 
     // Close menu on ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape" && navMenu.classList.contains('nav-menu-active')) {
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navMenu.classList.contains('nav-menu-active')) {
         toggleMenu();
       }
     });
@@ -113,48 +112,35 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================= NAVBAR SCROLL EFFECT ================= */
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if(window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
   }
 
-});
-// shop.js
+  /* ================= SHOP CATEGORY FILTER ================= */
+  const categoryButtons = document.querySelectorAll('.category-filters .baby-btn');
+  const products = document.querySelectorAll('.product-card');
 
-// Select category buttons and product cards
-const categoryButtons = document.querySelectorAll('.category-filters .baby-btn');
-const products = document.querySelectorAll('.product-card');
+  // Assign categories to products
+  const categories = ['newborn', 'active', 'night', 'newborn', 'active', 'night'];
+  products.forEach((product, index) => product.dataset.category = categories[index]);
 
-// Add category attribute to each product
-products[0].dataset.category = 'newborn';
-products[1].dataset.category = 'active';
-products[2].dataset.category = 'night';
-products[3].dataset.category = 'newborn';
-products[4].dataset.category = 'active';
-products[5].dataset.category = 'night';
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedCategory = btn.textContent.toLowerCase().replace(/\s/g, '');
 
-// Filter function
-categoryButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Remove active class from all buttons
-    categoryButtons.forEach(b => b.classList.remove('active'));
-    // Add active to clicked button
-    btn.classList.add('active');
+      // Update active button
+      categoryButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    const category = btn.textContent.toLowerCase().replace(/\s/g, ''); // e.g., "Night Protection" -> "nightprotection"
-
-    products.forEach(product => {
-      // Show all products if "all" is clicked
-      if (btn.textContent.toLowerCase() === 'all') {
-        product.style.display = 'block';
-      } else if (product.dataset.category === category || category.startsWith(product.dataset.category)) {
-        product.style.display = 'block';
-      } else {
-        product.style.display = 'none';
-      }
+      // Show/hide products
+      products.forEach(product => {
+        if (selectedCategory === 'all' || product.dataset.category === selectedCategory || selectedCategory.startsWith(product.dataset.category)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
     });
   });
+
 });
